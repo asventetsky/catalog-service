@@ -9,6 +9,7 @@ import org.springframework.boot.test.json.JacksonTester;
 import java.time.Instant;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 @JsonTest
 class BookJsonTests {
 

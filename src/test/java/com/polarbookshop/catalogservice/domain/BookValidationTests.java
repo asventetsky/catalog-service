@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 class BookValidationTests {
 
     private static Validator validator;
@@ -21,6 +22,7 @@ class BookValidationTests {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
     }
+
     @Test
     void whenAllFieldsCorrectThenValidationSucceeds() {
         var book = Book.of("1234567890", "Title", "Author", 9.90, "Polarsophia");
@@ -96,7 +98,7 @@ class BookValidationTests {
 
     @Test
     void whenPublisherIsNotDefinedThenValidationSucceeds() {
-        Book book = Book.of("1234567890", "Title", "Author", 9.90,null);
+        Book book = Book.of("1234567890", "Title", "Author", 9.90, null);
         Set<ConstraintViolation<Book>> violations = validator.validate(book);
         assertThat(violations).isEmpty();
     }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
 import java.util.Map;
+
 @RestControllerAdvice
 public class BookControllerAdvice {
 
@@ -19,6 +20,7 @@ public class BookControllerAdvice {
     String bookNotFoundHandler(BookNotFoundException ex) {
         return ex.getMessage();
     }
+
     @ExceptionHandler(BookAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     String bookAlreadyExistsHandler(BookAlreadyExistsException ex) {
@@ -27,9 +29,7 @@ public class BookControllerAdvice {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, String> handleValidationExceptions(
-            MethodArgumentNotValidException ex
-    ) {
+    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
         var errors = new HashMap<String, String>();
         ex.getBindingResult().getAllErrors().forEach(error -> {
             String fieldName = ((FieldError) error).getField();

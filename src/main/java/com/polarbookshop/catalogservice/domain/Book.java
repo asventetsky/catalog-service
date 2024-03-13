@@ -48,7 +48,7 @@ public record Book(
         @Version
         int version
 ) {
-        public static Book of(String isbn, String title, String author, Double price, String publisher) {
-                return new Book(null, isbn, title, author, price, publisher, null, null, 0);
-        }
+    public static Book of(String isbn, String title, String author, Double price, String publisher) {
+        return new Book(null, isbn, title, author, price, publisher, null, null, 0);
+    }
 }
