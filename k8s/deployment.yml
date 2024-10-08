@@ -51,3 +51,10 @@ spec:
               port: 9001
             initialDelaySeconds: 5
             periodSeconds: 15
+          volumeMounts:
+            - name: catalog-config-volume
+              mountPath: /workspace/config
+      volumes:
+        - name: catalog-config-volume
+          configMap:
+            name: catalog-config
